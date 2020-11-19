@@ -60,11 +60,13 @@ public class SampleClientChat extends AbstractClient {
    *
    * @param message The message from the UI.    
    */
-  public void handleMessageFromClientUI(String message)
+  public void handleMessageFromClientUI(Object message)
   {
     try
     {
+      clientUI.display("trying to send message now");
       sendToServer(message);
+      clientUI.display("sent!");
     }
     catch(IOException e)
     {

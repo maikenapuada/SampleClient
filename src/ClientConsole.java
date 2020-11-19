@@ -3,9 +3,14 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+import Classes.*;
 import java.io.*;
 import sampleclientchat.*;
 import common.*;
+import javafx.util.*;
+import java.util.List;
+import java.util.ArrayList;
+import java.time.*;
 /**
  *
  * @author maiken
@@ -62,7 +67,21 @@ public class ClientConsole implements ChatIF{
       while (true) 
       {
         message = fromConsole.readLine();
-        client.handleMessageFromClientUI(message);
+        if("patient".equals(message))
+        {
+            LocalDate dob=  LocalDate.of(1993,02,16);
+            Patient p = new Patient("Rob","Leto",dob,"89 King's Court, London","7778889999");
+            PatientModule pm = new PatientModule("add", p);
+            client.handleMessageFromClientUI(pm);
+        }
+        else if("log".equals(message))
+        {
+            
+        }
+        else
+        {
+             client.handleMessageFromClientUI(message);
+        }
       }
     } 
     catch (Exception ex) 
